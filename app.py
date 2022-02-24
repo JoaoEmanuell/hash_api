@@ -1,5 +1,5 @@
 # Imports
-from flask import Flask, render_template
+from flask import Flask, redirect
 
 app = Flask(__name__)
 
@@ -11,4 +11,4 @@ app.register_blueprint(docs, url_prefix='/docs/')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return redirect('/docs/')
