@@ -14,3 +14,8 @@ def index():
 def generate(value : str) -> dict :
     hash = {'hash' : Hash().generate_hash(value)}
     return jsonify(hash)
+
+@api.route('/compare/<string:value>/<string:hash>')
+def compare(value : str, hash : str) -> dict :
+    status = {'status' : Hash().compare_hash(value, hash)}
+    return jsonify(status)
