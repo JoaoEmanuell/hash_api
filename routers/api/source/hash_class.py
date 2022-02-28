@@ -10,9 +10,10 @@ class Hash:
     
     def generate_hash(self, value : str) -> str:
         try : 
-            self.__value = HashValidation(sha256(value.encode('utf-8')).hexdigest())._validate()
-        except ValueError :
-            return 'Error'
+            value_validate = HashValidation(value)._validate()
+            self.__value = sha256(value_validate).hexdigest()
+        except (ValueError, TypeError) as e:
+            return f'Error {e}'
         else :
             return self.__value
 
