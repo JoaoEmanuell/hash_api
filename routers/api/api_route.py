@@ -8,11 +8,8 @@ api = Blueprint('api', __name__)
 
 @api.route('/generate/')
 def generate() -> dict :
-    # try :
     return jsonify({'hash' : Hash().generate_hash(request.args.get('value'))})
-    '''except (AttributeError):
-        return jsonify({'hash' : f'Error {request.args[0]} not found'})'''
 
-@api.route('/compare/<string:value>/<string:hash>')
-def compare(value : str, hash : str) -> dict :
-    return jsonify({'status' : Hash().compare_hash(value, hash)})
+@api.route('/compare/')
+def compare() -> dict :
+    return jsonify({'status' : Hash().compare_hash(request.args.get('value'), request.args.get('hash'))})

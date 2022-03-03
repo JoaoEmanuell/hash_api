@@ -18,7 +18,10 @@ class Hash:
             return self.__value
 
     def compare_hash(self, value : str, hash : str) -> bool:
-        hash = HashValidation(hash)._validate()
-        if hash == self.generate_hash(value):
-            return True
-        return False
+        try :
+            self.hash_validate = HashValidation(hash)._validate()
+            if self.hash_validate == bytes(self.generate_hash(value), 'utf-8'): # Convert to bytes to compare
+                return True
+            return False
+        except (ValueError, TypeError) as e:
+            return f'Error {e}'
