@@ -6,9 +6,17 @@ from .source import Hash
 
 api = Blueprint('api', __name__)
 
-@api.route('/generate/')
+@api.route('/generate/', methods=['GET', 'POST'])
 def generate() -> dict :
-    return jsonify({'hash' : Hash().generate_hash(request.args.get('value'))})
+    if request.method == 'GET':
+        return jsonify({'hash' : Hash().generate_hash(request.args.get('value'))})
+    elif request.method == 'POST':
+        try : 
+            return jsonify({'hash' : Hash().generate_hash(request.form['value'])})
+        except KeyError:
+            return jsonify({'hash' : 'Invalid Key'})
+    else :
+        return 'Method not allowed'
 
 @api.route('/compare/')
 def compare() -> dict :
