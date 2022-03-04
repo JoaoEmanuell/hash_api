@@ -18,7 +18,7 @@ def generate() -> dict :
             return jsonify({'hash' : Hash().generate_hash(data['value'])})
         except KeyError:
             return jsonify({'hash' : 'Invalid Key'})
-        except JSONDecodeError :
+        except (JSONDecodeError, TypeError) :
             return jsonify({'hash' : 'Invalid JSON'})
     else :
         return 'Method not allowed'
@@ -33,7 +33,7 @@ def compare() -> dict :
             return jsonify({'status' : Hash().compare_hash(data['value'], data['hash'])})
         except KeyError :
             return jsonify({'status' : 'Invalid Key'})
-        except JSONDecodeError :
+        except (JSONDecodeError, TypeError) :
             return jsonify({'status' : 'Invalid JSON'})
     else :
         return 'Method not allowed'
