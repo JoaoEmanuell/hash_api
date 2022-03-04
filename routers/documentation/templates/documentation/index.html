@@ -16,7 +16,7 @@
         </p>
         <div>
             <p>Essa api é uma api capaz de gerar hash a partir de valores e comparar os hashs gerados por ela!</p>
-            <p>É necessário utilizar o método <b><span class="green">GET</span></b> para fazer as requisições a api</p>
+            <p>É necessário utilizar o método <b><span class="green">GET</span></b> ou <b><span class="green">POST</span></b> para fazer as requisições a api</p>
         </div>
         <div class="mt-4">
             <h2 class="d-flex justify-content-center" id="new_hash">Gerando um novo hash</h2>
@@ -26,6 +26,10 @@
     <span class="green">GET</span> https://flaskhashapi.herokuapp.com/api/generate/?<span class="yellow">value=</span>valor
     
     <span class="green">GET</span> https://flaskhashapi.herokuapp.com/api/generate/?<span class="yellow">value=</span>HelloWorld
+
+    <span class="green">POST</span> curl -H "Content-Type: application/json" -X POST -d <span class="yellow">
+    '{"value" : "HelloWorld"}'
+    </span>https://flaskhashapi.herokuapp.com/generate/
 </code>
 </pre>
         <p>Caso de tudo certo ela irá retornar um elemento Json contendo um campo chamado <i>hash</i> nesse campo está o hash gerado.</p>
@@ -39,6 +43,11 @@
     <span class="green">GET</span> https://flaskhashapi.herokuapp.com/api/compare/?<span class="yellow">value=</span>valor&<span class="yellow">hash=</span>hash
 
     <span class="green">GET</span> https://flaskhashapi.herokuapp.com/api/compare/?<span class="yellow">value=</span>HelloWorld&<span class="yellow">hash=</span>872e4e50ce9990d8b041330c47c9ddd11bec6b503ae9386a99da8584e9bb12c4
+
+    <span class="green">POST</span> curl -H "Content-Type: application/json" -X POST -d <span class="yellow">
+    '{"value" : "HelloWorld",
+    "hash" : "872e4e50ce9990d8b041330c47c9ddd11bec6b503ae9386a99da8584e9bb12c4"}'
+    </span>https://flaskhashapi.herokuapp.com/api/compare/
 </code>
 </pre>
         <p>Caso de tudo certo ela irá retornar um elemento Json contendo um campo chamado <i>status</i> esse campo contem um valor booleano, sendo <i>true</i> caso o valor corresponda ao hash ou <i>false</i> caso o valor não corresponda ao hash</p>
