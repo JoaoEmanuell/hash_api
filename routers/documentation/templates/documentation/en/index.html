@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='code.css') }}">
+</head>
+<body>
+    {% include '_navbar.html' %}
+    <div class="container mt-4">
+        <h1 class="d-flex justify-content-center">Api documentation</h1>
+        <p>
+            <label for="endpoint">End point : </label><a id="endpoint"> https://flaskhashapi.herokuapp.com/api</a>
+        </p>
+        <div>
+            <p>Essa api é uma api capaz de gerar hash a partir de valores e comparar os hashs gerados por ela!</p>
+            <p>É necessário utilizar o método <b><span class="green">GET</span></b> ou <b><span class="green">POST</span></b> para fazer as requisições a api</p>
+        </div>
+        <div class="mt-4">
+            <h2 class="d-flex justify-content-center" id="new_hash">Gerando um novo hash</h2>
+        <p>Para gerar um novo hash acesse o endpoint da api na rota <i>generate</i> e passe um paramentro chamado de <i>value</i> como <i>query</i> e como valor desse paramentro passe o texto que você deseja utilizar para criar o hash</p>
+    <pre translate="no">
+<code>
+    <span class="green">GET</span> https://flaskhashapi.herokuapp.com/api/generate/?<span class="yellow">value=</span>valor
+    
+    <span class="green">GET</span> https://flaskhashapi.herokuapp.com/api/generate/?<span class="yellow">value=</span>HelloWorld
+
+    <span class="green">POST</span> curl -H "Content-Type: application/json" -X POST -d <span class="yellow">
+        '{"value" : "HelloWorld"}'
+    </span>https://flaskhashapi.herokuapp.com/generate/
+</code>
+</pre>
+        <p>Caso de tudo certo ela irá retornar um elemento Json contendo um campo chamado <i>hash</i> nesse campo está o hash gerado.</p>
+        <p>Caso o valor de hash seja igual a <i>Error</i> significa que algo deu errado durante a geração do hash!</p>
+        </div>
+        <div class="mt-4">
+            <h2 class="d-flex justify-content-center" id="compare_hash">Comparando hash</h2>
+            <p>Para comparar um hash acesse o endpoint da api na rota <i>compare</i>, passe um paramentro chamado de <i>value</i> como <i>query</i> e como valor desse paramentro passe o texto que você deseja utilizar para criar o hash, passe também outro paramentro chamado de hash e como valor desse paramentro passe o hash que foi gerado em <i><a href="#new_hash">generate</a></i></p>
+    <pre translate="no">
+<code>
+    <span class="green">GET</span> https://flaskhashapi.herokuapp.com/api/compare/?<span class="yellow">value=</span>valor&<span class="yellow">hash=</span>hash
+
+    <span class="green">GET</span> https://flaskhashapi.herokuapp.com/api/compare/?<span class="yellow">value=</span>HelloWorld&<span class="yellow">hash=</span>872e4e50ce9990d8b041330c47c9ddd11bec6b503ae9386a99da8584e9bb12c4
+
+    <span class="green">POST</span> curl -H "Content-Type: application/json" -X POST -d <span class="yellow">'
+        {"value" : "HelloWorld", 
+        "hash" : "872e4e50ce9990d8b041330c47c9ddd11bec6b503ae9386a99da8584e9bb12c4"}' 
+    </span>https://flaskhashapi.herokuapp.com/api/compare/
+</code>
+</pre>
+        <p>Caso de tudo certo ela irá retornar um elemento Json contendo um campo chamado <i>status</i> esse campo contem um valor booleano, sendo <i>true</i> caso o valor corresponda ao hash ou <i>false</i> caso o valor não corresponda ao hash</p>
+        </div>
+    </div>
+</body>
+</html>
