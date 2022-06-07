@@ -15,12 +15,12 @@
             <label for="endpoint">End point : </label><a id="endpoint"> https://flaskhashapi.herokuapp.com/api</a>
         </p>
         <div>
-            <p>Essa api é uma api capaz de gerar hash a partir de valores e comparar os hashs gerados por ela!</p>
+            <p>Essa api é uma api capaz de gerar hash a partir de valores e comparar os hashes gerados por ela!</p>
             <p>É necessário utilizar o método <b><span class="green">GET</span></b> ou <b><span class="green">POST</span></b> para fazer as requisições a api</p>
         </div>
         <div class="mt-4">
             <h2 class="d-flex justify-content-center" id="new_hash">Gerando um novo hash</h2>
-        <p>Para gerar um novo hash acesse o endpoint da api na rota <i>generate</i> e passe um paramentro chamado de <i>value</i> como <i>query</i> e como valor desse paramentro passe o texto que você deseja utilizar para criar o hash</p>
+        <p>Para gerar um novo hash acesse o endpoint da api na rota <i>generate</i> e passe um parâmetro chamado de <i>value</i> como <i>query</i> e como valor desse parâmetro passe o texto que você deseja utilizar para criar o hash</p>
     <pre translate="no">
 <code>
     <span class="green">GET</span> https://flaskhashapi.herokuapp.com/api/generate/?<span class="yellow">value=</span>valor
@@ -37,7 +37,7 @@
         </div>
         <div class="mt-4">
             <h2 class="d-flex justify-content-center" id="compare_hash">Comparando hash</h2>
-            <p>Para comparar um hash acesse o endpoint da api na rota <i>compare</i>, passe um paramentro chamado de <i>value</i> como <i>query</i> e como valor desse paramentro passe o texto que você deseja utilizar para criar o hash, passe também outro paramentro chamado de hash e como valor desse paramentro passe o hash que foi gerado em <i><a href="#new_hash">generate</a></i></p>
+            <p>Para comparar um hash acesse o endpoint da api na rota <i>compare</i>, passe um parâmetro chamado de <i>value</i> como <i>query</i> e como valor desse parâmetro passe o texto que você deseja utilizar para criar o hash, passe também outro parâmetro chamado de hash e como valor desse parâmetro passe o hash que foi gerado em <i><a href="#new_hash">generate</a></i></p>
     <pre translate="no">
 <code>
     <span class="green">GET</span> https://flaskhashapi.herokuapp.com/api/compare/?<span class="yellow">value=</span>valor&<span class="yellow">hash=</span>hash

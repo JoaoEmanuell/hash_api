@@ -9,5 +9,4 @@ def index():
     try :
         return render_template(f'documentation/{language}/index.html')
     except TemplateNotFound:
-        print(f'Language not found : {language}')
         return render_template('documentation/pt/index.html')
