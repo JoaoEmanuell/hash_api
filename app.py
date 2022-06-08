@@ -11,7 +11,7 @@ app.register_blueprint(docs, url_prefix='/docs/')
 
 @app.route('/')
 def index():
-    return redirect('/docs/?language=pt')
+    return redirect('/docs/?language=pt-br')
 
 if __name__ == '__main__':
     app.run(debug=False)
