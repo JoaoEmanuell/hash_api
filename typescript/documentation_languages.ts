@@ -1,8 +1,8 @@
-function main() {
-    const supported_languages = {
-    'Português': 'pt-br',
-    'English': 'en'
-    }
+function main() : void {
+    const supported_languages = [
+        ['Português', 'pt-br', 'Linguagem'],
+        ['English', 'en', 'Language'],
+    ]
     const url_treated = window.location.href.split('/');
     if (url_treated[3] == 'docs') {
         
@@ -35,7 +35,7 @@ function main() {
 
         // Object.entries convert a object to array
 
-        Object.entries(supported_languages).forEach(element => {
+        supported_languages.forEach(element => {
 
             const li_internal_element = document.createElement('li');
             const ul_internal_a_element = document.createElement('a');
@@ -52,8 +52,8 @@ function main() {
 
             // Verify if the language is the last current language
 
-            if (element[1] != Object.entries(supported_languages)[
-                Object.entries(supported_languages).length - 1 // Last element
+            if (element[1] != supported_languages[
+                supported_languages.length - 1 // Last element
                 ][1]) {
 
                 const hr = document.createElement('hr');
