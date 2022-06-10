@@ -3,7 +3,11 @@ function main() : void {
         ['Português', 'pt-br', 'Linguagem'],
         ['English', 'en', 'Language'],
     ]
+
     const url_treated = window.location.href.split('/');
+    const url_query = new URLSearchParams(window.location.search);
+    const language_query = url_query.get('language'); // Actual language
+
     if (url_treated[3] == 'docs') {
         
         const div_translated = document.getElementById('translated');
@@ -22,7 +26,16 @@ function main() : void {
         a_base_element.setAttribute('role', 'button');
         a_base_element.setAttribute('data-bs-toggle', 'dropdown');
         a_base_element.setAttribute('aria-expanded', 'false');
-        a_base_element.innerHTML = 'Language';
+
+        // Get 'Language' in native language
+
+        supported_languages.forEach(language => {
+
+            if (language[1] == language_query) {
+                a_base_element.innerHTML = language[2];
+            }
+
+        });
 
         li_base_element.className = 'nav-item dropdown';
 
@@ -32,8 +45,6 @@ function main() : void {
         ul_base_element.setAttribute('aria-labelledby', 'navbarDropdown');
 
         // Dropdown Menu
-
-        // Object.entries convert a object to array
 
         supported_languages.forEach(element => {
 
